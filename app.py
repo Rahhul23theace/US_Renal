@@ -1,4 +1,7 @@
 
+
+
+
 from flask import Flask, request, redirect, url_for, render_template, flash
 from werkzeug.utils import secure_filename
 from flask import send_from_directory
@@ -7,8 +10,15 @@ import os
 import torch
 import torch.nn as nn
 from torchvision import transforms, models
-from util_cpu import load_models, ensemble_prediction, load_image_from_file
-from genAI_feedback import generate_feedback
+from util_cpu import load_models, ensemble_prediction, load_image_from_file, generate_feedback
+#from single_feedback import generate_feedback
+from memory_profiler import memory_usage
+
+
+mem_before = memory_usage()
+
+
+
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads/'
@@ -84,6 +94,16 @@ def upload_file():
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+
+
+
+
+mem_after = memory_usage()
+memory_used = mem_after[0] - mem_before[0]
+print(f"Memory used: {memory_used} MB")
+
+
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))

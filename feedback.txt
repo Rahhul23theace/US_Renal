@@ -1,0 +1,94 @@
+
+
+https://hku.au1.qualtrics.com/jfe/form/SV_6nGIlWFyHbUIgPY
+
+
+
+def generate_feedback(predicted_classes):
+    feedback = []
+    for prediction in predicted_classes:
+        feedback_for_prediction = []
+        labels = prediction.split(", ")
+        for label in labels:
+            if label == "Artefact":
+                artefact_feedback_options = ["The image contains unwanted artifacts. To minimize artifacts, please ensure proper probe placement and scanning technique.",
+                    "Artifacts are present in the image. Check your probe placement and scanning technique to minimize these disturbances.",
+                    "There are artifacts in the image that may affect its quality. Consider revising the probe placement and scanning method to reduce these issues.",
+                    "Unwanted artifacts are visible in the image. Double-check the probe positioning and scanning technique to minimize artifacts.",
+                    "Artifacts are affecting the image quality. Make sure to use the proper probe placement and scanning technique to minimize these issues.",
+                    "The image has artifacts that could interfere with the analysis. Verify the probe placement and scanning technique to reduce artifacts."
+                ]
+                feedback_for_prediction.append(random.choice(artefact_feedback_options))
+            elif label == "Incorrect_Gain":
+                incorrect_gain_feedback_options = [
+                    "The gain settings need adjustment. Properly set the gain to avoid over- or under-exposing the image.",
+                    "It seems the gain is not adjusted correctly. Please correct the gain settings to ensure a well-exposed image.",
+                    "The gain settings appear to be off. Adjust the gain to achieve a balanced image exposure.",
+                    "Image exposure is not optimal due to incorrect gain settings. Please adjust the gain accordingly.",
+                    "The image seems over- or under-exposed due to improper gain settings. Adjust the gain for a better image quality.",
+                    "Please fine-tune the gain settings to achieve an optimal image exposure."
+                ]
+                feedback_for_prediction.append(random.choice(incorrect_gain_feedback_options))
+            elif label == "Incorrect_Position":
+                incorrect_position_feedback_options = [
+                    "The probe or patient's position needs improvement. Ensure correct probe positioning for a clear and accurate kidney image.",
+                    "Positioning of the probe or patient is not ideal. Properly position the probe for an accurate kidney image.",
+                    "Probe or patient positioning is suboptimal. Adjust the position for a clear and precise kidney image.",
+                    "The position of the probe or patient could be better. Make sure to accurately position the probe for a high-quality kidney image.",
+                    "Probe or patient's positioning is affecting the image quality. Adjust the positioning for a clearer kidney image.",
+                    "Improper probe or patient positioning is causing issues. Correct the positioning for a better kidney image."
+                ]
+                feedback_for_prediction.append(random.choice(incorrect_position_feedback_options))
+            elif label == "Optimal":
+                optimal_feedback_options = [
+                    "Great job! The image quality is excellent.",
+                    "Well done! The image quality is ideal.",
+                    "Good work! The image quality is perfect.",
+                    "Keep up the good work! The kidney image is optimal.",
+                    "Excellent! The image quality is just right.",
+                    "Nice work! The kidney image is of optimal quality."
+                ]
+                feedback_for_prediction.append(random.choice(optimal_feedback_options))
+            elif label == "Wrong":
+                wrong_feedback_options = [
+                    "The image is not of the intended kidney or another organ. Ensure proper scanning technique and probe placement.",
+                    "The captured image is incorrect. Please make sure you are using the correct scanning technique and probe placement.",
+                    "It appears the image is not of the intended kidney or another organ. Double-check the scanning method and probe positioning.",
+                    "The image does not show the correct kidney or organ. Make sure to use the appropriate scanning technique and probe placement.",
+                    "The captured image is not the intended kidney or another organ. Verify the scanning technique and probe positioning.",
+                    "The image is incorrect. Ensure the proper scanning technique and probe placement for the intended kidney or organ."
+                ]
+                feedback_for_prediction.append(random.choice(wrong_feedback_options))
+            else:
+                feedback_for_prediction.append("I am sorry, something went wrong")
+        feedback.append(feedback_for_prediction)
+    return feedback
+
+
+
+
+
+
+
+
+
+def generate_feedback(predicted_classes):
+    feedback = []
+    for prediction in predicted_classes:
+        feedback_for_prediction = []
+        labels = prediction.split(", ")
+        for label in labels:
+            if label == "Artefact":
+                feedback_for_prediction.append("The image contains unwanted artifacts. To minimize artifacts, please ensure proper probe placement and scanning technique.")
+            elif label == "Incorrect_Gain":
+                feedback_for_prediction.append("The gain settings need adjustment. Properly set the gain to avoid over- or under-exposing the image.")
+            elif label == "Incorrect_Position":
+                feedback_for_prediction.append("The probe or patient's position needs improvement. Ensure correct probe positioning for a clear and accurate kidney image.")
+            elif label == "Optimal":
+                feedback_for_prediction.append("Great job! The image quality is excellent.")
+            elif label == "Wrong":
+                feedback_for_prediction.append("The image is not of the intended kidney or another organ. Ensure proper scanning technique and probe placement.")
+            else:
+                feedback_for_prediction.append("I am sorry, something went wrong")
+        feedback.append(feedback_for_prediction)
+    return feedback

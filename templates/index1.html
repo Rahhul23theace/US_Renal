@@ -90,7 +90,6 @@
         </form>
         <br>
 
-        
         {% if predicted_classes %}
         <h3>Predicted Classes:</h3>
         <div class="image-grid">
@@ -101,10 +100,12 @@
             </div>
             {% endfor %}
         </div>
+        <script>
+            window.onload = function() {
+                window.open('https://hku.au1.qualtrics.com/jfe/form/SV_et7Q72ZFY1HLkH4', '_blank');
+            };
+        </script>
         {% endif %}
-        
-        <button onclick="window.open('https://hku.au1.qualtrics.com/jfe/form/SV_et7Q72ZFY1HLkH4', '_blank');" class="btn btn-primary">Share your feedback with us</button>
-        
         
 <!-- Feedback section -->
 <hr>
@@ -128,14 +129,13 @@
             </td>
             <td>
                 {% for feedback in feedback_list %}
-                {{ feedback|safe }}<br><br>  <!-- Add an extra line break here -->
+                {{ feedback }}<br>
                 {% endfor %}
             </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
-
 
 
     </div>

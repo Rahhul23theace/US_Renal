@@ -1,8 +1,5 @@
 
 
-
-
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -103,7 +100,7 @@
         </div>
         {% endif %}
         
-        <button onclick="window.open('https://hku.au1.qualtrics.com/jfe/form/SV_et7Q72ZFY1HLkH4', '_blank');" class="btn btn-primary">Share your feedback with us</button>
+        <button onclick="window.open('https://hku.au1.qualtrics.com/jfe/form/SV_et7Q72ZFY1HLkH4', '_blank');" class="btn btn-primary">Submit Survey</button>
         
         
 <!-- Feedback section -->
@@ -128,14 +125,13 @@
             </td>
             <td>
                 {% for feedback in feedback_list %}
-                {{ feedback|safe }}<br><br>  <!-- Add an extra line break here -->
+                {{ feedback }}<br>
                 {% endfor %}
             </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
-
 
 
     </div>
